@@ -1,0 +1,34 @@
+/* Khung chứa ảnh phủ kín toàn bộ màn hình làm nền */
+.hero-container {
+  position: fixed;
+  inset: 0;              /* Tràn toàn bộ màn hình (top, right, bottom, left = 0) */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;            /* Nằm ở lớp dưới cùng (làm nền) */
+  pointer-events: none;  /* Giúp bấm chuột/click xuyên qua ảnh */
+  overflow: hidden;
+}
+
+/* Ảnh tự động phóng to/thu nhỏ tràn kín màn hình */
+.hero-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* Phủ kín khung, cắt bỏ phần thừa tỷ lệ để không bị méo ảnh */
+  display: block;
+}
+
+/* Đảm bảo khung chữ và nội dung nổi lên trên ảnh nền */
+#stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 5;            /* Nằm đè lên trên ảnh nền */
+  transition: opacity 1s, transform 1s;
+}
